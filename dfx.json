@@ -1,0 +1,37 @@
+{
+    "canisters": {
+        "ckbtc": {
+            "type": "custom",
+            "candid": "ckbtc/ledger.did",
+            "wasm": "ckbtc/ledger.wasm.gz"
+        },
+        "kyt": {
+            "type": "custom",
+            "candid": "kyt/kyt.did",
+            "wasm": "kyt/kyt.wasm.gz"
+        },
+        "minter": {
+            "type": "custom",
+            "candid": "minter/minter.did",
+            "wasm": "minter/minter.wasm.gz"
+        }
+    },
+    "networks": {
+        "local": {
+            "bind": "127.0.0.1:8080",
+            "type": "ephemeral",
+            "replica": {
+                "subnet_type": "system"
+            }
+        }
+    },
+    "defaults": {
+        "bitcoin": {
+            "enabled": true,
+            "nodes": [
+                "127.0.0.1:18444"
+            ],
+            "log_level": "info"
+        }
+    }
+}
