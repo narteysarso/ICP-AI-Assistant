@@ -1,79 +1,132 @@
-# Chain Key BTC
+# ICPAssistant AI Chat Bot
+### NB: This project is for demonstration purposes ONLY and not vetted or audited and should not be used in production.
+ICPAssistant is an AI assistant the provides general information about the blockchain, cryptocurrency, and helps you connect and interact with ledger canisters on the ICP including ICP token and ckbtc.
 
-Keep in mind that this is a simple demo example of ckBTC with Azle, and is probably not suitable for production use. Learn wisely.
+The aim of this project is to create a Defi Assistant, that helps you to interact with tokens and smart contracts on the Internet Computer. It can help you make transactions, provide you with information about tokens, and help you to interact with smart contracts or Bitcoin as contained in the [ICP Hackathon December 2023 Idea Doc](https://hackmd.io/rmKmStiVSZy54MCw8vrLJQ).
 
-This ckBTC example shows you how to setup ckBTC locally, with the `ckBTC ledger`, `internet identity`, `kyt`, `minter`, and `bitcoind`. It also has a canister wallet backend and frontend. The canister wallet shows how a canister can control a number of ckBTC subaccounts. The frontend functionality only shows how to mint ckBTC and transfer between other canister wallets.
+With this project we aim to make ICP easily accessible, and lower the adoption and learning curve to getting started with ICP. This means that, anyone that can chat can use the ICP and by extension decentralized techonology. We hope this drives adoption of blockchain technology globally.
 
-## Setup
+# Pre-requsite
+- Make sure you have all the necessary environment setup for working with [azle. check here](https://demergent-labs.github.io/azle/installation.html)
+- For windows user work with [wsl](https://learn.microsoft.com/en-us/windows/wsl/install). Move folder to /home rather than working via mounting /mnt
 
-Install all npm dependencies and download canister Wasm binaries:
+# Setup
+Some commands requires permission for the execution of certain scipts. In such case run `chmod u+x <path-to-script>`
 
-```bash
-npm install
-```
+install necessary dependencies
+	
+	npm install 
 
-Update the `canisters.wallet_backend.declarations.node_compatibility` property in dfx.json to `false`:
+Run the following commands in different terminals
 
-> **Note:**
-> The tests require node_compatibility to be set to `true` but the frontend requires it to be set to `false`. Toggle it according to your use case.
+start bitcoinid:
 
-## Deployment
+    npm run bitcoin
 
-Run each of the following commands, each in a separate terminal.
+Start dfx in the background
 
-Bitcoin daemon:
+    npm run ic
 
-```bash
-npm run bitcoin
-```
+install nns canisters
 
-IC replica:
+    dfx nns install
 
-```bash
-npm run ic
-```
+deploy local canisters
 
-Deploy canisters:
+    npm run deploy
 
-```bash
-npm run deploy
-```
+run ai server
+        
+	npm run deploy:ai
 
-## Usage
 
-1. Create an Internet Identity
+# Usage
+## 1. Interacting for blockchain information
+* Get services or capability list: 
 
-    Go to the `wallet_frontend` URL `http://ryjl3-tyaaa-aaaaa-aaaba-cai.localhost:8000`.
+        What can you do?
 
-    ```bash
-    npm run frontend
-    ```
+1. Get list of top tokens: 
 
-    The first time you visit the frontend it should re-direct you to the local internet-identity to authenticate. If it does not try refreshing the page.
+        What are the top 5 tokens
 
-    > **Note:**
-    > This Internet Identity service is running locally (see the local url?) and is for testing. **DO NOT USE YOUR REAL INTERNET IDENTITY!!!**
+2. Get news: 
 
-    ![image](https://github.com/demergent-labs/azle/assets/5455419/6d929bb3-e87e-45c9-88f6-c79b3e8236a4)
+        get some cryptocurrency news
 
-    Select "Create New" and continue through the provided instructions to create a new **local test** internet identity.
+3. Get token price in any currency: 
 
-    ![image](https://github.com/demergent-labs/azle/assets/5455419/564bc367-e6b3-4ccd-81a9-917089da67da)
+        what is the price of btc in euro?
 
-    Make note of the identity number it generated and then click "I saved it, continue".
+4. convert on token to another: 
 
-2. Mint some BTC
+        how much is btc in eth?
 
-    Back on the frontend site copy the bitcoin deposit address as shown below:
+5. get info about a token: 
 
-    ![image](https://github.com/demergent-labs/azle/assets/5455419/3d6ac20e-e1eb-4d90-a65a-460f8242d8fd)
+        where can i buy btc?
+6. Get general info about the blockchain: 
 
-    Mint some BTC to your wallet by running the following command, replacing `<your-canister-btc-address>` with the address from the frontend:
+        What is ICP?
 
-    ```bash
-    npm run mint --address=<your-canister-btc-address>
-    ```
 
-3. Now click `Update Balance` in the web UI to retrieve the updated balance.
+## 1. Interacting with ICP ledger canister
+1. instruct the ai bot to generate an ICP identity:      
 
-4. Play around. Try transferring some ckBTC to an account in another independent browser tab.
+        Generate a random ICP identity and tag as "account 1" 
+        
+    "account 1" can be any name you prefer. 
+    
+    You can also provide it a seed phrase to generate an identity: 
+    
+        generate identity from seed "<your-seed-mnemonic-phrase>"
+    
+2. Generate ICP token address: 
+
+        generate icp token address for account 1
+
+3. Mint some test ICP tokens on the UI at http://qsgjb-riaaa-aaaaa-aaaga-cai.localhost:8080/ and transfer some to the ICP address generated by the bot.
+4. Check account balance via the bot: 
+
+        what is the icp token balance of account 1?
+
+5. transfer ICP token to another address: 
+
+        transfer <X> icp tokens to <icp-token-address>
+    Where `<X>` is the number of tokens to transfer. `<X>` must be less than the number of icp tokens in sender address.
+6. Check account balance via the bot to see the effect of the transfer: 
+
+        what is the icp token balance of account 1?
+
+## 2. Interacting with CKBTC
+1. instruct the ai bot to generate an ICP identity: 
+
+        Generate a random ICP identity and tag as "<your-account-name>"` 
+    You can also provide it a seed phrase to generate an identity 
+    
+        generate identity from seed "<your-seed-mnemonic-phrase>"
+
+2. Generate ckbtc token address: 
+
+        generate ckbtc token address for <your-account-name>
+
+3. **In your terminal**, mint some test BTC to your wallet by running the following command, replacing <your-canister-btc-address> with the address from the chat bot: 
+
+        npm run mint --address=<your-canister-btc-address>` 
+    This will mint `49` ckbtc to you.
+4. Now instruct the bot to retrieve the updated balance: 
+
+        update ckbtc balance
+
+5. instruct the bot to get the ckbtc balance: 
+
+        what is the ckbtc balance of this account?
+
+6. transfer ckbtc token to another address: 
+
+        transfer <X> ckbtc to <another-ckbtc-address>
+
+    Where <X> is the number of tokens to transfer. <X> must be less than the number of ckbtc tokens in sender address.
+7. Check account balance via the bot to see the effect of the transfer: 
+
+        what is the ckbtc balance of <your-account-name>?
