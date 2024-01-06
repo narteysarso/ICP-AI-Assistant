@@ -1,0 +1,11 @@
+service: () -> {
+    createThread: (record {id:text; name:text; createdAt:nat64}, principal) -> (variant {Ok:record {id:text; userId:principal; name:text; createdAt:nat64}; Err:variant {ThreadDoesNotExist:principal; UserDoesNotExist:principal}});
+    createUser: (text) -> (record {id:principal; name:text; createdAt:nat64; threadIds:vec text});
+    deleteThread: (text) -> (variant {Ok:record {id:text; userId:principal; name:text; createdAt:nat64}; Err:variant {ThreadDoesNotExist:principal; UserDoesNotExist:principal}});
+    deleteUser: (principal) -> (variant {Ok:record {id:principal; name:text; createdAt:nat64; threadIds:vec text}; Err:variant {ThreadDoesNotExist:principal; UserDoesNotExist:principal}});
+    readThreadById: (text) -> (opt record {id:text; userId:principal; name:text; createdAt:nat64}) query;
+    readThreadByUser: (principal) -> (variant {Ok:vec record {id:text; userId:principal; name:text; createdAt:nat64}; Err:variant {ThreadDoesNotExist:principal; UserDoesNotExist:principal}}) query;
+    readThreads: () -> (vec record {id:text; userId:principal; name:text; createdAt:nat64}) query;
+    readUserById: (principal) -> (opt record {id:principal; name:text; createdAt:nat64; threadIds:vec text}) query;
+    readUsers: () -> (vec record {id:principal; name:text; createdAt:nat64; threadIds:vec text}) query;
+}
