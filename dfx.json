@@ -15,6 +15,15 @@
             "candid": "canisters/minter/minter.did",
             "wasm": "canisters/minter/minter.wasm.gz"
         },
+        "backend": {
+            "type": "custom",
+            "main": "canisters/backend/src/index.ts",
+            "candid": "canisters/backend/src/index.did",
+            "build": "npx azle backend",
+            "wasm": ".azle/backend/backend.wasm",
+            "gzip": true,
+            "env": ["OPEN_AI_API_KEY"]
+          },
         "frontend": {
             "frontend": {
                 "entrypoint": "canisters/frontend/build/index.html"

@@ -13,11 +13,8 @@ export function WsProvider({ children }) {
     const ws = useRef(null);
 
     const handleMessages = (event = []) => {
-        // console.log(event?.status);
-        // console.log(event);
         if (!MESSAGE_STATUSES.includes(event?.status)) return;
         const messages = event?.data;
-        // console.log(messages);
 
         if (!Array.isArray(messages)) return;
 
@@ -30,8 +27,6 @@ export function WsProvider({ children }) {
             imgsrc: ROLES[role]?.imgsrc
         }));
 
-        console.log(parsedMessage);
-
         setMessages(prev => parsedMessage);
     }
 
@@ -41,8 +36,6 @@ export function WsProvider({ children }) {
 
         localStorage.setItem("thread_id", thread_id);
     }
-
-    // "undefined" means the URL will be computed from the `window.location` object
 
     useEffect(() => {
 

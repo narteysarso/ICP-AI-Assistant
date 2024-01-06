@@ -6,9 +6,9 @@ require('dotenv').config({ path: ".env" });
 const search = async (params) => {
     const { input } = params;
     try {
-        const result = (0, serpapi_1.getJson)({
-            q: input,
-            location: "wl-wl",
+        const result = await (0, serpapi_1.getJson)({
+            q: `${input} blockchain cryptocurrency`,
+            safe: "active",
             api_key: process.env.SERP_API_KEY
         });
         return JSON.stringify(result);

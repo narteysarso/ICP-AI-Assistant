@@ -68,7 +68,7 @@ deploy local canisters
 
 run ai server
         
-	npm run deploy:ai
+    npm run deploy:ai
 
 
 # Usage

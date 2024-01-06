@@ -11,7 +11,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
 	cors: {
-		origin: "http://localhost:3000"
+		origin: process.env.ALLOWED_ORIGINS?.split(",")
 	}
 });
 const port = parseInt(process.env.WS_PORT as string) || 3090;
@@ -78,6 +78,6 @@ init().then(
 		})
 	}
 )
-	.then(() => httpServer.listen(port, "localhost", () => console.log("server ready")))
+	.then(() => httpServer.listen(port, "localhost", () => console.log(`server ready at port ${port}`)))
 	.catch(console.log);
 
