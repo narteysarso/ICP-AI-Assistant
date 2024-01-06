@@ -9,3 +9,16 @@ export const identityFromSeed = async (phrase: string) => {
 
     return Secp256k1KeyIdentity.fromSecretKey(addrnode.privateKey);
 };
+
+
+export const isValidThreadId = (thread_id: string) : boolean => {
+    if(!thread_id) return false
+
+    if(typeof thread_id !== "string") return false
+
+    if(thread_id.indexOf("thread") > 0) return false
+
+    if(thread_id.split("_").length !== 2) return false;
+
+    return true
+}

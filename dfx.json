@@ -2,18 +2,28 @@
     "canisters": {
         "ckbtc": {
             "type": "custom",
-            "candid": "ckbtc/ledger.did",
-            "wasm": "ckbtc/ledger.wasm.gz"
+            "candid": "canisters/ckbtc/ledger.did",
+            "wasm": "canisters/ckbtc/ledger.wasm.gz"
         },
         "kyt": {
             "type": "custom",
-            "candid": "kyt/kyt.did",
-            "wasm": "kyt/kyt.wasm.gz"
+            "candid": "canisters/kyt/kyt.did",
+            "wasm": "canisters/kyt/kyt.wasm.gz"
         },
         "minter": {
             "type": "custom",
-            "candid": "minter/minter.did",
-            "wasm": "minter/minter.wasm.gz"
+            "candid": "canisters/minter/minter.did",
+            "wasm": "canisters/minter/minter.wasm.gz"
+        },
+        "frontend": {
+            "frontend": {
+                "entrypoint": "canisters/frontend/build/index.html"
+              },
+              "source": [
+                "canisters/frontend/build"
+              ],
+              "type": "assets",
+              "gzip": true
         }
     },
     "networks": {

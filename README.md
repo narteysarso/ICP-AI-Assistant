@@ -1,21 +1,52 @@
-# ICPAssistant AI Chat Bot
-### NB: This project is for demonstration purposes ONLY and not vetted or audited and should not be used in production.
+# ICP DEFI AI Assistant
+### NB: This project is for demonstration purposes ONLY (not vetted or audited) and should not be used in production.
 ICPAssistant is an AI assistant the provides general information about the blockchain, cryptocurrency, and helps you connect and interact with ledger canisters on the ICP including ICP token and ckbtc.
 
 The aim of this project is to create a Defi Assistant, that helps you to interact with tokens and smart contracts on the Internet Computer. It can help you make transactions, provide you with information about tokens, and help you to interact with smart contracts or Bitcoin as contained in the [ICP Hackathon December 2023 Idea Doc](https://hackmd.io/rmKmStiVSZy54MCw8vrLJQ).
 
 With this project we aim to make ICP easily accessible, and lower the adoption and learning curve to getting started with ICP. This means that, anyone that can chat can use the ICP and by extension decentralized techonology. We hope this drives adoption of blockchain technology globally.
 
+![Alt text](ai-tools-img.PNG)
+
+# Tools and libraries
+- Azle
+- Typescript/Javascript
+- Node JS
+- Open AI
+- Express
+- Socket.io
+- FlowiseAI
+- WSL 2
+- Rapid API
+- Coin Market Cap API
+
+# Resources
+- Azle
+- Open AI
+- Flowise AI
+
 # Pre-requsite
 - Make sure you have all the necessary environment setup for working with [azle. check here](https://demergent-labs.github.io/azle/installation.html)
 - For windows user work with [wsl](https://learn.microsoft.com/en-us/windows/wsl/install). Move folder to /home rather than working via mounting /mnt
 
-# Setup
-Some commands requires permission for the execution of certain scipts. In such case run `chmod u+x <path-to-script>`
 
-install necessary dependencies
+# Setup
+Some commands requires permission for the execution of certain scipts. In such case run `chmod u+x <path-to-script>` egs: 
+- `chmod u+x ./scripts/deploy/all.sh`
+- `chmod u+x ./scripts/deploy/ckbtc.sh` 
+- `chmod u+x ./scripts/deploy/kyt.sh` 
+- `chmod u+x ./scripts/deploy/minter.sh` 
+- `chmod u+x ./scripts/install/all.sh` 
+- `chmod u+x ./scripts/install/bitcoin.sh`
+
+Install necessary dependencies
 	
 	npm install 
+
+Make a copy of `.env.example` and rename to `.env` in `servers/ai` directory and provide the necessary keys
+Deploy AI Assistant to your Open AI account directly
+
+        
 
 Run the following commands in different terminals
 
@@ -41,6 +72,10 @@ run ai server
 
 
 # Usage
+
+#### Open ICP ledger UI at 
+#### Open ICPAssistant UI at 
+
 ## 1. Interacting for blockchain information
 * Get services or capability list: 
 
@@ -130,3 +165,6 @@ run ai server
 7. Check account balance via the bot to see the effect of the transfer: 
 
         what is the ckbtc balance of <your-account-name>?
+
+
+# Acknowledgement and Contributions
